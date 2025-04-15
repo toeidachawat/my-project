@@ -1,0 +1,37 @@
+/* ปรับขนาดฟอนต์ของตารางให้ใหญ่ขึ้น */
+.custom-table .ant-table {
+  font-size: 16px;
+}
+
+.custom-table .ant-table-thead > tr > th {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.custom-table .ant-table-tbody > tr > td {
+  font-size: 16px;
+}
+.form-label-large {
+  font-size: 16px;
+  font-weight: 500;
+}
+.export-excel-btn {
+  background-color: #4caf50; /* สีพื้นหลังเขียว */
+  color: white; /* สีตัวอักษรขาว */
+  border: none; /* ไม่มีขอบ */
+  font-size: 16px; /* ขนาดตัวอักษร */
+  padding: 10px 20px; /* เพิ่ม padding รอบๆ ปุ่ม */
+  border-radius: 5px; /* มุมมน */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงาเล็กๆ */
+  transition: all 0.3s ease; /* เพิ่ม transition สำหรับการเปลี่ยนแปลง */
+}
+
+.export-excel-btn:hover {
+  background-color: #45a049; /* สีเขียวเข้มเมื่อ hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อ hover */
+}
+
+.export-excel-btn .anticon {
+  font-size: 20px; /* ขนาดของไอคอน */
+  margin-right: 10px; /* เพิ่มช่องว่างระหว่างไอคอนกับข้อความ */
+}
