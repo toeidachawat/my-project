@@ -189,6 +189,23 @@ const HomePage = () => {
   const totalAmount = () => {
     return data.reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
   };
+  const getDangerousNumbers = () => {
+    const numberMap: { [key: string]: number } = {};
+
+    data.forEach((item) => {
+      const num = item.number2 || item.number3;
+      if (num) {
+        numberMap[num] = (numberMap[num] || 0) + parseFloat(item.amount || "0");
+      }
+    });
+
+    return (
+      Object.entries(numberMap)
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .filter(([_, sum]) => sum >= 440 && sum >= 500)
+        .map(([num, sum]) => ({ number: num, total: sum }))
+    );
+  };
 
   return (
     <>
@@ -244,6 +261,7 @@ const HomePage = () => {
               label={<span className="form-label-large">ประเภท</span>}
               name="category"
               style={{ flex: 1 }}
+              rules={[{ required: true, message: "กรุณาเลือกประเภท!" }]}
             >
               <Select
                 options={
@@ -306,7 +324,7 @@ const HomePage = () => {
       </div>
 
       <Row gutter={16} style={{ marginTop: 24 }}>
-        <Col xs={24} md={12}>
+        <Col xs={24} md={8}>
           <Card title="สรุปยอด 2 ตัว" style={{ marginBottom: 16 }}>
             <Text color="darkGrey">
               ยอดรวม (2 ตัวบน): {totalAmountByCategory("บน")} บาท
@@ -316,7 +334,8 @@ const HomePage = () => {
             </Text>
           </Card>
         </Col>
-        <Col xs={24} md={12}>
+
+        <Col xs={24} md={8}>
           <Card title="สรุปยอด 3 ตัว" style={{ marginBottom: 16 }}>
             <Text color="darkGrey">
               ยอดรวม (3 ตัวบน): {totalAmountByCategoryTree("บน")} บาท
@@ -329,9 +348,33 @@ const HomePage = () => {
             </Text>
           </Card>
         </Col>
-        <Col xs={24}>
+
+        <Col xs={24} md={8}>
           <Card title="ยอดรวมทั้งหมด" style={{ marginTop: 16 }}>
             <Text color="darkGrey">ยอดรวมทั้งหมด: {totalAmount()} บาท</Text>
+          </Card>
+        </Col>
+
+        <Col xs={24}>
+          <Card title="เลขอั้น" style={{ marginTop: 16 }}>
+            {getDangerousNumbers().length > 0 ? (
+              <>
+                <Text color="red" strong>
+                  ⚠️ เลขที่มียอดแทงเกิน 500 บาท:
+                </Text>
+                <div style={{ paddingLeft: 16 }}>
+                  {getDangerousNumbers().map((item) => (
+                    <div key={item.number} style={{ marginBottom: 8 }}>
+                      <Text color="darkGrey">
+                        เลข {item.number} : {item.total.toLocaleString()} บาท
+                      </Text>
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <Text color="darkGrey">ไม่มีเลขที่มียอดแทงเกิน 500 บาท</Text>
+            )}
           </Card>
         </Col>
       </Row>
