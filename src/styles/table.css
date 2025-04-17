@@ -1,37 +1,93 @@
-/* ปรับขนาดฟอนต์ของตารางให้ใหญ่ขึ้น */
-.custom-table .ant-table {
-  font-size: 16px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: #f0f2f5;
 }
 
-.custom-table .ant-table-thead > tr > th {
-  font-size: 16px;
-  font-weight: bold;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
 }
 
-.custom-table .ant-table-tbody > tr > td {
-  font-size: 16px;
+.ant-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  border-radius: 2px;
+  transition: all 0.3s;
 }
-.form-label-large {
-  font-size: 16px;
+
+.ant-btn-primary {
+  background-color: #1890ff;
+  border-color: #1890ff;
+  color: white;
+}
+
+.ant-btn-primary:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.ant-btn-success {
+  background-color: #52c41a;
+  border-color: #52c41a;
+  color: white;
+}
+
+.ant-btn-success:hover {
+  background-color: #73d13d;
+  border-color: #73d13d;
+}
+
+.ant-input:focus,
+.ant-select-focused {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.ant-card {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s;
+}
+
+.ant-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+}
+
+.ant-table {
+  background: white;
+  border-radius: 2px;
+}
+
+.ant-table-thead > tr > th {
+  background: #fafafa;
+  color: rgba(0, 0, 0, 0.85);
   font-weight: 500;
 }
-.export-excel-btn {
-  background-color: #4caf50; /* สีพื้นหลังเขียว */
-  color: white; /* สีตัวอักษรขาว */
-  border: none; /* ไม่มีขอบ */
-  font-size: 16px; /* ขนาดตัวอักษร */
-  padding: 10px 20px; /* เพิ่ม padding รอบๆ ปุ่ม */
-  border-radius: 5px; /* มุมมน */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เงาเล็กๆ */
-  transition: all 0.3s ease; /* เพิ่ม transition สำหรับการเปลี่ยนแปลง */
+
+.water-animation {
+  animation: waterWave 2s infinite ease-in-out;
 }
 
-.export-excel-btn:hover {
-  background-color: #45a049; /* สีเขียวเข้มเมื่อ hover */
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเมื่อ hover */
+@keyframes waterWave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
-.export-excel-btn .anticon {
-  font-size: 20px; /* ขนาดของไอคอน */
-  margin-right: 10px; /* เพิ่มช่องว่างระหว่างไอคอนกับข้อความ */
+.progress-animation {
+  transition: width 1s ease-in-out;
 }
