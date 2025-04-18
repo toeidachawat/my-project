@@ -13,7 +13,7 @@ const DangerNumbers = ({ data, threshold = 500 }: DangerNumbersProps) => {
     const numberMap: { [key: string]: number } = {};
 
     data.forEach((item) => {
-      const num = item.number2 || item.number3;
+      const num = item.number || item.number;
       if (num) {
         numberMap[num] = (numberMap[num] || 0) + parseFloat(item.amount || "0");
       }

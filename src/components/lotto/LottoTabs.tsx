@@ -10,9 +10,9 @@ interface LottoTabsProps {
 const LottoTabs = ({ data, onDelete }: LottoTabsProps) => {
   const columns = [
     {
-      title: "เลข 2 ตัว",
-      dataIndex: "number2",
-      key: "number2",
+      title: "เลข",
+      dataIndex: "number",
+      key: "number",
       align: "center" as const,
       render: (text: string, record: DataItem) => (
         <span className="lotto-tabs__number">
@@ -21,15 +21,6 @@ const LottoTabs = ({ data, onDelete }: LottoTabsProps) => {
             <span className="lotto-tabs__reversed-badge">กลับเลขแล้ว</span>
           )}
         </span>
-      ),
-    },
-    {
-      title: "เลข 3 ตัว",
-      dataIndex: "number3",
-      key: "number3",
-      align: "center" as const,
-      render: (text: string) => (
-        <span className="lotto-tabs__number">{text}</span>
       ),
     },
     {
@@ -78,14 +69,17 @@ const LottoTabs = ({ data, onDelete }: LottoTabsProps) => {
     },
   ];
 
-  const tabItems = ["บน", "ล่าง", "โต๊ด"].map((cat) => ({
-    key: cat,
-    label: <span className="lotto-tabs__tab-label">เลข{cat}</span>,
-    children: (
-      <div className="lotto-tabs__table-container">
+  <div className="lotto-tabs__table-container"></div>;
+
+  return (
+    <div className="lotto-tabs">
+      <div className="lotto-tabs__header">
+        <div className="lotto-tabs__title">รายการหวยของคุณ</div>
+      </div>
+      <div className="lotto-tabs__content">
         <Table
           className="lotto-tabs__table"
-          dataSource={data.filter((item) => item.category === cat)}
+          dataSource={data.filter((item) => item.category)}
           columns={columns}
           rowKey="key"
           pagination={{
@@ -96,27 +90,10 @@ const LottoTabs = ({ data, onDelete }: LottoTabsProps) => {
           locale={{
             emptyText: (
               <div className="lotto-tabs__empty-state">
-                <p>ยังไม่มีรายการ {cat}</p>
+                <p>ยังไม่มีรายการ </p>
               </div>
             ),
           }}
-        />
-      </div>
-    ),
-  }));
-
-  return (
-    <div className="lotto-tabs">
-      <div className="lotto-tabs__header">
-        <h2 className="lotto-tabs__title">รายการหวยของคุณ</h2>
-        <p className="lotto-tabs__subtitle">ดูรายการทั้งหมดตามประเภท</p>
-      </div>
-      <div className="lotto-tabs__content">
-        <Tabs
-          defaultActiveKey="บน"
-          className="lotto-tabs__tabs"
-          items={tabItems}
-          type="card"
         />
       </div>
     </div>

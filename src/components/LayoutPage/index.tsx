@@ -1,8 +1,7 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
+import { WindowsOutlined, LinuxOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom"; // นำเข้า useNavigate จาก react-router-dom
-
 // กำหนด Props ให้รองรับ children
 interface Props {
   children?: React.ReactNode;
@@ -45,11 +44,7 @@ const LayoutWrapper: React.FC<Props> = ({ children }) => {
             alt="Logo"
             style={{ height: "32px", marginRight: "12px" }}
           />
-          <span
-            style={{ color: "white", fontSize: "20px", fontWeight: "bold" }}
-          >
-            My Lottaly
-          </span>
+          <span style={{ color: "white", fontSize: "20px" }}>Lottoly</span>
         </div>
       </Header>
 
@@ -62,11 +57,11 @@ const LayoutWrapper: React.FC<Props> = ({ children }) => {
             style={{ height: "100%", borderRight: 0 }}
             onClick={({ key }) => handleMenuClick(key)} // ใช้ onClick เพื่อเรียก handleMenuClick
           >
-            <Menu.Item key="1" icon={<HomeOutlined />}>
-              หน้าแรก
+            <Menu.Item key="1" icon={<WindowsOutlined />}>
+              เพิ่มข้อมูลตัวเลข
             </Menu.Item>
-            <Menu.Item key="2" icon={<UserOutlined />}>
-              ผู้ใช้
+            <Menu.Item key="2" icon={<LinuxOutlined />}>
+              คำนวณเงิน
             </Menu.Item>
           </Menu>
         </Sider>

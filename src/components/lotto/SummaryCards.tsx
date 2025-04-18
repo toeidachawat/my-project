@@ -7,16 +7,16 @@ interface SummaryCardsProps {
 }
 
 const SummaryCards = ({ data }: SummaryCardsProps) => {
-  // คำนวณยอดรวมตามประเภท 2 ตัว
+  // คำนวณยอดรวม 2 ตัว ตามประเภท
   const totalAmountByCategory = (category: string) =>
     data
-      .filter((item) => item.category === category && item.number2)
+      .filter((item) => item.category === category && item.number.length === 2)
       .reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
 
-  // คำนวณยอดรวมตามประเภท 3 ตัว
+  // คำนวณยอดรวม 3 ตัว ตามประเภท
   const totalAmountByCategoryTree = (category: string) =>
     data
-      .filter((item) => item.category === category && item.number3)
+      .filter((item) => item.category === category && item.number.length === 3)
       .reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
 
   // คำนวณยอดรวมทั้งหมด

@@ -18,6 +18,7 @@ import {
   DollarOutlined,
   PercentageOutlined,
 } from "@ant-design/icons";
+import "../styles/UserPage.css";
 
 const { Title, Text } = Typography;
 const { TabPane } = Tabs;
@@ -493,18 +494,6 @@ const UserPage: React.FC = () => {
           </Card>
         </Col>
       </Row>
-
-      <style jsx>{`
-        .lottery-calculator {
-          padding: 20px;
-          background-color: #f0f2f5;
-          min-height: 100vh;
-        }
-        .result-card {
-          margin-top: 24px;
-          text-align: center;
-        }
-      `}</style>
     </div>
   );
 };

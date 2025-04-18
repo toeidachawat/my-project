@@ -1,0 +1,9 @@
+.lottery-calculator {
+  padding: 20px;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+.result-card {
+  margin-top: 24px;
+  text-align: center;
+}

@@ -1,8 +1,7 @@
 export interface DataItem {
   isReversed: boolean;
   key: number;
-  number2: string;
-  number3: string;
+  number: string;
   category: string;
   amount: string;
 }

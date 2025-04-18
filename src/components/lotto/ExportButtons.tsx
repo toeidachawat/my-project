@@ -9,7 +9,7 @@ interface ExportButtonsProps {
 
 const ExportButtons = ({ data }: ExportButtonsProps) => {
   return (
-    <div className="flex gap-4 my-6">
+    <div style={{ display: "flex", gap: 6 }}>
       <ExportExcelButton data={data} />
       <ExportPDFButton data={data} />
     </div>

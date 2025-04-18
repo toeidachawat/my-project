@@ -22,7 +22,6 @@ const LottoManager = () => {
         for (let i = l; i < str.length; i++) {
           [str[l], str[i]] = [str[i], str[l]];
           permute([...str], l + 1);
-          // ไม่ต้อง swap กลับ เพราะใช้ [...str]
         }
       }
     };
@@ -43,29 +42,25 @@ const LottoManager = () => {
 
   // เพิ่มเลขลงในตาราง
   const handleAdd = (value: {
-    number2: string;
-    number3: string;
+    number: string;
     category: string;
     amount: string;
     isReversed: boolean;
   }) => {
-    if (!value.number2 && !value.number3) return;
+    if (!value.number) return;
 
     const newData: DataItem[] = [];
     const amount = value.amount;
+    const digitCount = value.number.length;
 
-    if (
-      value.number3 &&
-      value.category === "โต๊ด" &&
-      value.number3.length === 3
-    ) {
-      const permutations = generateReverseCombinations(value.number3);
+    // กรณีเป็นเลข 3 ตัวและเป็นโต๊ด
+    if (digitCount === 3 && value.category === "โต๊ด") {
+      const permutations = generateReverseCombinations(value.number);
       permutations.forEach((perm, index) => {
-        if (!data.some((d) => d.number3 === perm && d.category === "โต๊ด")) {
+        if (!data.some((d) => d.number === perm && d.category === "โต๊ด")) {
           newData.push({
             key: data.length + index,
-            number2: "",
-            number3: perm,
+            number: perm,
             category: "โต๊ด",
             amount,
             isReversed: false,
@@ -73,22 +68,22 @@ const LottoManager = () => {
         }
       });
     } else {
+      // กรณีปกติ - เพิ่มเลข
       newData.push({
         key: data.length,
-        number2: value.number2,
-        number3: value.number3,
+        number: value.number,
         category: value.category,
         amount: value.amount,
         isReversed: false,
       });
 
-      if (value.number2 && value.number2.length === 2 && value.isReversed) {
-        const reversedNumber2 = value.number2.split("").reverse().join("");
-        if (reversedNumber2 !== value.number2) {
+      // กรณีเป็นเลข 2 ตัวและต้องการกลับเลข
+      if (digitCount === 2 && value.isReversed) {
+        const reversedNumber = value.number.split("").reverse().join("");
+        if (reversedNumber !== value.number) {
           newData.push({
             key: data.length + 1,
-            number2: reversedNumber2,
-            number3: value.number3,
+            number: reversedNumber,
             category: value.category,
             amount,
             isReversed: false,
@@ -109,19 +104,16 @@ const LottoManager = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <div className="space-y-6">
-        {/* ส่วนฟอร์มเพิ่มเลข */}
-        <LottoForm onAddNumber={handleAdd} />
-
-        {/* ส่วนแสดงข้อมูลในรูปแบบ tabs */}
         <LottoTabs data={data} onDelete={handleDelete} />
 
-        {/* ส่วนปุ่มส่งออกข้อมูล */}
-        <ExportButtons data={data} />
+        <LottoForm onAddNumber={handleAdd} />
+        <div style={{ paddingTop: 14 }}>
+          <ExportButtons data={data} />
+        </div>
+        <div style={{ paddingTop: 14 }}>
+          <SummaryCards data={data} />
+        </div>
 
-        {/* ส่วนแสดงสรุปยอด */}
-        <SummaryCards data={data} />
-
-        {/* ส่วนแสดงเลขอั้น */}
         <DangerNumbers data={data} threshold={500} />
       </div>
     </div>

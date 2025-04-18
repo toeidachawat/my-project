@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Input, Radio } from "antd";
 import { useForm, useWatch } from "antd/es/form/Form";
-import { useState } from "react";
-import "../../styles/LottoForm.css"; // ต้องสร้างไฟล์ CSS แยกต่างหาก
+import { useState, useEffect } from "react";
+import "../../styles/LottoForm.css";
 
 interface LottoFormProps {
   onAddNumber: (values: any) => void;
@@ -9,12 +9,26 @@ interface LottoFormProps {
 
 const LottoForm = ({ onAddNumber }: LottoFormProps) => {
   const [form] = useForm();
-  const number2 = useWatch("number2", form);
-  const number3 = useWatch("number3", form);
+  const number = useWatch("number", form);
   const [isReversed, setIsReversed] = useState(false);
+  const [digitCount, setDigitCount] = useState<number>(0);
+
+  // ตรวจสอบจำนวนหลักของตัวเลข
+  useEffect(() => {
+    if (number) {
+      setDigitCount(number.length);
+    } else {
+      setDigitCount(0);
+    }
+  }, [number]);
 
   const handleSubmit = (values: any) => {
-    onAddNumber({ ...values, isReversed });
+    const submitValues = {
+      ...values,
+      isReversed: isReversed && digitCount === 2,
+    };
+
+    onAddNumber(submitValues);
     form.resetFields();
     setIsReversed(false);
   };
@@ -24,56 +38,43 @@ const LottoForm = ({ onAddNumber }: LottoFormProps) => {
       <h2 className="lotto-form-title">เพิ่มหมายเลขหวย</h2>
       <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <div className="lotto-form-layout">
-          {/* Two-digit number section */}
-          <div className="lotto-form-group">
-            <Form.Item
-              label={<span className="lotto-form-label">เลข 2 ตัว</span>}
-              name="number2"
-              rules={[
-                { pattern: /^\d{0,2}$/, message: "กรอกได้สูงสุด 2 หลัก" },
-              ]}
-              style={{ flex: 1, minWidth: "120px", marginBottom: "8px" }}
-            >
-              <Input
-                className="lotto-form-input"
-                placeholder="เช่น 25"
-                maxLength={2}
-                disabled={!!number3}
-              />
-            </Form.Item>
-
-            <Form.Item style={{ marginBottom: "8px", marginTop: "28px" }}>
-              <Checkbox
-                className="lotto-form-checkbox"
-                disabled={!!number3}
-                checked={isReversed}
-                onChange={(e) => setIsReversed(e.target.checked)}
-              >
-                กลับเลข (25 ↔ 52)
-              </Checkbox>
-            </Form.Item>
-          </div>
-
-          {/* Three-digit number section */}
+          {/* Single input for both 2 and 3 digit numbers */}
           <Form.Item
-            label={<span className="lotto-form-label">เลข 3 ตัว</span>}
-            name="number3"
+            label={<span className="lotto-form-label">เลข 2-3 ตัว</span>}
+            name="number"
+            rules={[
+              { required: true, message: "กรุณากรอกตัวเลข!" },
+              { pattern: /^\d{2,3}$/, message: "กรอกได้ 2-3 หลักเท่านั้น" },
+            ]}
             style={{ flex: 1, minWidth: "120px", marginBottom: "8px" }}
-            rules={[{ pattern: /^\d{0,3}$/, message: "กรอกได้สูงสุด 3 หลัก" }]}
           >
             <Input
               className="lotto-form-input"
-              placeholder="เช่น 789"
+              placeholder="เช่น 25 หรือ 789"
               maxLength={3}
-              disabled={!!number2}
               onChange={(e) => {
-                if (!e.target.value) {
-                  form.resetFields(["category"]);
+                const value = e.target.value;
+                // Reset category if necessary when changing number
+                if (value.length !== 3) {
+                  form.setFieldsValue({ category: undefined });
                 }
-                setIsReversed(false);
               }}
             />
           </Form.Item>
+
+          {/* Checkbox for reversing 2-digit numbers */}
+          {digitCount === 2 && (
+            <Form.Item style={{ marginBottom: "8px" }}>
+              <Checkbox
+                className="lotto-form-checkbox"
+                checked={isReversed}
+                onChange={(e) => setIsReversed(e.target.checked)}
+              >
+                กลับเลข ({number} ↔{" "}
+                {number ? number.split("").reverse().join("") : ""})
+              </Checkbox>
+            </Form.Item>
+          )}
 
           {/* Category selection */}
           <Form.Item
@@ -86,11 +87,13 @@ const LottoForm = ({ onAddNumber }: LottoFormProps) => {
               className="lotto-form-radio"
               optionType="button"
               buttonStyle="solid"
-              style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}
+              style={{ display: "flex", gap: "8px" }}
             >
               <Radio.Button value="บน">บน</Radio.Button>
               <Radio.Button value="ล่าง">ล่าง</Radio.Button>
-              {number3 && <Radio.Button value="โต๊ด">โต๊ด</Radio.Button>}
+              {digitCount === 3 && (
+                <Radio.Button value="โต๊ด">โต๊ด</Radio.Button>
+              )}
             </Radio.Group>
           </Form.Item>
 
