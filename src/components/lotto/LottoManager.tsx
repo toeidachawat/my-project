@@ -68,6 +68,7 @@ const LottoManager = () => {
             number3: perm,
             category: "โต๊ด",
             amount,
+            isReversed: false,
           });
         }
       });
@@ -78,6 +79,7 @@ const LottoManager = () => {
         number3: value.number3,
         category: value.category,
         amount: value.amount,
+        isReversed: false,
       });
 
       if (value.number2 && value.number2.length === 2 && value.isReversed) {
@@ -89,6 +91,7 @@ const LottoManager = () => {
             number3: value.number3,
             category: value.category,
             amount,
+            isReversed: false,
           });
         }
       }

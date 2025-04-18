@@ -8,10 +8,6 @@ const HomePage = () => {
           <h1 className="text-3xl font-bold text-gray-800">
             ระบบจัดการเลขลอตเตอรี่
           </h1>
-          <p className="text-gray-600 mt-2">
-            จัดการเลขลอตเตอรี่ของคุณได้อย่างง่ายดาย
-            แสดงยอดรวมและแจ้งเตือนเมื่อมีเลขอั้น
-          </p>
         </div>
 
         <LottoManager />

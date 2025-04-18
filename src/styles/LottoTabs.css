@@ -1,0 +1,225 @@
+/* LottoTabs.css */
+
+.lotto-tabs {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.lotto-tabs__header {
+  background: linear-gradient(135deg, #4285f4, #0f62fe);
+  padding: 1.5rem 2rem;
+  color: white;
+  text-align: center;
+}
+
+.lotto-tabs__title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.lotto-tabs__subtitle {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.lotto-tabs__content {
+  padding: 1.5rem 2rem;
+}
+
+/* Custom Tabs Styling */
+.lotto-tabs__tabs .ant-tabs-nav {
+  margin-bottom: 1.5rem !important;
+}
+
+.lotto-tabs__tabs .ant-tabs-nav::before {
+  border-bottom: none !important;
+}
+
+.lotto-tabs__tabs .ant-tabs-tab {
+  background-color: #f1f5f9 !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+  padding: 0.75rem 1.5rem !important;
+  margin-right: 0.5rem !important;
+  border: 1px solid #e2e8f0 !important;
+  border-bottom: none !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.lotto-tabs__tabs .ant-tabs-tab:hover {
+  background-color: #e2e8f0 !important;
+}
+
+.lotto-tabs__tabs .ant-tabs-tab-active {
+  background-color: #4285f4 !important;
+  border-color: #4285f4 !important;
+}
+
+.lotto-tabs__tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: white !important;
+  font-weight: 600 !important;
+}
+
+.lotto-tabs__tab-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Table Styling */
+.lotto-tabs__table-container {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+}
+
+.lotto-tabs__table .ant-table-thead > tr > th {
+  background-color: #f8fafc !important;
+  color: #4a5568 !important;
+  font-weight: 600 !important;
+  padding: 1rem !important;
+  font-size: 1rem !important;
+}
+
+.lotto-tabs__table .ant-table-tbody > tr > td {
+  padding: 1rem !important;
+  font-size: 1rem !important;
+}
+
+.lotto-tabs__table .ant-table-tbody > tr:hover > td {
+  background-color: #f1f5f9 !important;
+}
+
+/* Custom cell styling */
+.lotto-tabs__number {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2d3748;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lotto-tabs__reversed-badge {
+  font-size: 0.75rem;
+  background-color: #ebf5ff;
+  color: #3182ce;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.lotto-tabs__category {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  min-width: 5rem;
+}
+
+.lotto-tabs__category--บน {
+  background-color: #e6f7ff;
+  color: #0070f3;
+}
+
+.lotto-tabs__category--ล่าง {
+  background-color: #fff2e8;
+  color: #fa8c16;
+}
+
+.lotto-tabs__category--โต๊ด {
+  background-color: #f6ffed;
+  color: #52c41a;
+}
+
+.lotto-tabs__amount {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 1.125rem;
+}
+
+/* Delete button styling */
+.lotto-tabs__delete-button {
+  background-color: #fff2f0 !important;
+  border-color: #ffccc7 !important;
+  color: #f5222d !important;
+  font-weight: 600 !important;
+  padding: 0.4rem 1.25rem !important;
+  height: auto !important;
+  border-radius: 0.5rem !important;
+  transition: all 0.2s ease-in-out !important;
+}
+
+.lotto-tabs__delete-button:hover {
+  background-color: #ff4d4f !important;
+  border-color: #ff4d4f !important;
+  color: white !important;
+}
+
+/* Popconfirm styling */
+.lotto-tabs__confirm-button {
+  background-color: #f5222d !important;
+  border-color: #f5222d !important;
+}
+
+.lotto-tabs__cancel-button {
+  border-color: #d9d9d9 !important;
+}
+
+/* Empty state styling */
+.lotto-tabs__empty-state {
+  padding: 2rem 0;
+  text-align: center;
+  color: #718096;
+  font-size: 1rem;
+}
+
+/* Pagination styling */
+.lotto-tabs__pagination .ant-pagination-item-active {
+  border-color: #4285f4 !important;
+}
+
+.lotto-tabs__pagination .ant-pagination-item-active a {
+  color: #4285f4 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lotto-tabs__content {
+    padding: 1rem;
+  }
+
+  .lotto-tabs__header {
+    padding: 1.25rem 1rem;
+  }
+
+  .lotto-tabs__title {
+    font-size: 1.5rem;
+  }
+
+  .lotto-tabs__table .ant-table-thead > tr > th,
+  .lotto-tabs__table .ant-table-tbody > tr > td {
+    padding: 0.75rem 0.5rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .lotto-tabs__category {
+    padding: 0.25rem 0.5rem;
+    min-width: 4rem;
+  }
+
+  .lotto-tabs__delete-button {
+    padding: 0.25rem 0.75rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .lotto-tabs__tabs .ant-tabs-tab {
+    padding: 0.5rem 1rem !important;
+    margin-right: 0.25rem !important;
+  }
+}

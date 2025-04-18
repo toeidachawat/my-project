@@ -1,0 +1,165 @@
+/* LottoForm.css */
+
+.lotto-form-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.lotto-form-container:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.07), 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.lotto-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.lotto-form-layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.lotto-form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .lotto-form-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.lotto-form-label {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.lotto-form-input {
+  font-size: 1.25rem !important;
+  text-align: center !important;
+  height: 3rem !important;
+  border-radius: 0.5rem !important;
+  border: 2px solid #e2e8f0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.lotto-form-input:hover {
+  border-color: #4299e1 !important;
+}
+
+.lotto-form-input:focus {
+  border-color: #3182ce !important;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.25) !important;
+}
+
+.lotto-form-input::placeholder {
+  color: #a0aec0 !important;
+}
+
+.lotto-form-input:disabled {
+  background-color: #f7fafc !important;
+  color: #a0aec0 !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Radio styling */
+.lotto-form-radio .ant-radio-button-wrapper {
+  height: 3rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 1.5rem !important;
+  border-radius: 0.5rem !important;
+  border: 2px solid #e2e8f0 !important;
+  font-weight: 600 !important;
+  margin-right: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.lotto-form-radio .ant-radio-button-wrapper:first-child {
+  border-left: 2px solid #e2e8f0 !important;
+}
+
+.lotto-form-radio .ant-radio-button-wrapper.ant-radio-button-wrapper-checked {
+  border-color: #3182ce !important;
+  color: #3182ce !important;
+  background-color: rgba(49, 130, 206, 0.05) !important;
+}
+
+.lotto-form-radio
+  .ant-radio-button-wrapper.ant-radio-button-wrapper-checked::before {
+  display: none !important;
+}
+
+.lotto-form-radio .ant-radio-button-wrapper:hover {
+  color: #4299e1 !important;
+}
+
+/* Checkbox styling */
+.lotto-form-checkbox {
+  font-weight: 500 !important;
+  color: #4a5568 !important;
+  height: 2rem !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.lotto-form-checkbox .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #3182ce !important;
+  border-color: #3182ce !important;
+}
+
+.lotto-form-checkbox:hover .ant-checkbox-inner {
+  border-color: #4299e1 !important;
+}
+
+.lotto-form-checkbox.ant-checkbox-disabled {
+  color: #a0aec0 !important;
+}
+
+.lotto-form-checkbox.ant-checkbox-disabled .ant-checkbox-inner {
+  border-color: #e2e8f0 !important;
+  background-color: #f7fafc !important;
+}
+
+/* Button styling */
+.lotto-form-button {
+  width: 100% !important;
+  height: 3.5rem !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  background-color: #3182ce !important;
+  border-color: #3182ce !important;
+  border-radius: 0.75rem !important;
+  margin-top: 1.5rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.lotto-form-button:hover {
+  background-color: #2b6cb0 !important;
+  border-color: #2b6cb0 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 6px rgba(43, 108, 176, 0.25) !important;
+}
+
+.lotto-form-button:active {
+  transform: translateY(0) !important;
+  box-shadow: none !important;
+}
